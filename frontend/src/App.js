@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { useEffect } from 'react';
 import VimEditor from './editor/vimEditor.js';
 //import Level from './pages/levels/level.js';
@@ -22,10 +22,36 @@ function App() {
   }, []);
   return (
     <BrowserRouter>
-      <nav id = "global-nav">
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/levels">Levels</Link>
-      </nav>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <NavLink className="navbar-brand" to="/">
+          ArchVim
+        </NavLink>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="navbar-nav ms-auto">
+            <NavLink className="nav-link" to="/">
+              Home
+            </NavLink>
+            <NavLink className="nav-link" to="/levels">
+              Levels
+            </NavLink>
+          </div>
+        </div>
+      </div>
+    </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
